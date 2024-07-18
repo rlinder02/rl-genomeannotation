@@ -46,6 +46,39 @@
                 }
             }
         },
+        "braker_options": {
+            "title": "BRAKER options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "prot_seq": {
+                    "type": "string",
+                    "description": "The OrthoDB11 protein database"
+                },
+                "busco_lineage": {
+                    "type": "string",
+                    "default": "[]",
+                    "description": "The BUSCO lineage to use"
+                }
+            }
+        },
+        "omark_options": {
+            "title": "Omark options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "prot_seq": {
+                    "type": "string",
+                    "description": "The Omamer proteame database"
+                },
+                "splice_txt": {
+                    "type": "string",
+                    "description": "Txt file of protein isoforms"
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",

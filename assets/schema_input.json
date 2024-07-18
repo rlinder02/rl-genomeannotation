@@ -13,21 +13,28 @@
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
                 "meta": ["id"]
             },
-            "fastq_1": {
+            "fasta": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+                "pattern": "^\\S+\\.f(ast)?a$",
+                "errorMessage": "Fasta file for the assembly to be annotated cannot contain spaces and must have extension '.fa' or '.fasta'"
             },
-            "fastq_2": {
+            "RNAseq": {
+                "type": "string",
+                "format": "path",
+                "exists": true,
+                "pattern": "^\\S+$",
+                "errorMessage": "Directory containing fastq files for RNAseq reads must be provided, cannot contain spaces and must have names 'id_1.fastq.gz' and 'id_2.fastq.gz'"
+            },
+            "Isoseq": {
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
                 "pattern": "^\\S+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
+                "errorMessage": "FastQ file for Isoseq reads cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
             }
         },
-        "required": ["sample", "fastq_1"]
+        "required": ["sample", "fasta", "RNAseq"]
     }
 }

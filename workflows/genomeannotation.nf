@@ -26,11 +26,16 @@ workflow GENOMEANNOTATION {
 
     main:
 
-    new_samplesheet = ch_samplesheet.map { id, fasta, rnaseq, isoseq -> 
-                                          (sample, haplotype) = id.tokenize("_")
-                                          meta = [id:sample, haplotype:haplotype]
-                                          [meta, fasta, rnaseq, isoseq]
-                                          }.view()
+    ch_samplesheet 
+    | map { id, fasta, rnaseq, isoseq -> 
+        (sample, haplotype) = id.tokenize("_")
+        meta = [
+                id:sample, 
+                haplotype:haplotype
+                ]
+                [meta, fasta, rnaseq, isoseq]
+    }
+    | view
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 

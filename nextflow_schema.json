@@ -74,7 +74,7 @@
             "description": "",
             "default": "",
             "properties": {
-                "prot_seq": {
+                "omamer_db": {
                     "type": "string",
                     "description": "The Omamer proteame database"
                 },

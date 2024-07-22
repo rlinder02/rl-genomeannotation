@@ -26,15 +26,20 @@ workflow GENOMEANNOTATION {
 
     main:
 
+    new_samplesheet = ch_samplesheet.map { id, fasta, rnaseq, isoseq -> 
+                                          (sample, haplotype) = id.tokenize("_")
+                                          meta = [id:sample, haplotype:haplotype]
+                                          [meta, fasta, rnaseq, isoseq]
+                                          }.view()
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
 
     //
     // SUBWORKFLOW: Annotate a genome assembly with short-read only or short- and long-read (PacBio) RNAseq data
     //
-    ANNOTATE (
-        ch_samplesheet  
-    )
+    // ANNOTATE (
+    //     ch_samplesheet  
+    // )
 
     // ch_multiqc_files = ch_multiqc_files.mix(HIFI_QC.out.n50.map {it[1]})
     // ch_multiqc_files = ch_multiqc_files.mix(HIFI_QC.out.read_len_plot.map {it[1]})
@@ -43,12 +48,12 @@ workflow GENOMEANNOTATION {
     //
     //SUBWORKFLOW: Assemble PacBio HiFi reads and scaffold using a reference genome
     //
-    ANNOTATION_QC (
-        ch_samplesheet,
-        ANNOTATE.out.gtf,
-        ANNOTATE.out.aa,
-        ANNOTATE.out.sr_bam
-    )
+    // ANNOTATION_QC (
+    //     ch_samplesheet,
+    //     ANNOTATE.out.gtf,
+    //     ANNOTATE.out.aa,
+    //     ANNOTATE.out.sr_bam
+    // )
 
     // ch_assembly_fasta = GENOME_ASSEMBLY.out.assembly
     // ch_assembly_scaffold = GENOME_ASSEMBLY.out.corrected_scaffold

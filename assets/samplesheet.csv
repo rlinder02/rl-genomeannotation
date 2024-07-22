@@ -1,2 +1,2 @@
 sample,fasta,RNAseq,Isoseq
-J,/path/to/fastq/files/AEG588A1_S1_L002_R1_001.fastq.gz,/path/to/fastq/files/AEG588A1_S1_L002_R2_001.fastq.gz
+J_hap1,data/J.scaffolded.masked.fasta,data/,data/Jcell_isoSeqccs_demux2_flnc.fastq.gz

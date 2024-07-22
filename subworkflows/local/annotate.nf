@@ -17,30 +17,31 @@ workflow ANNOTATE {
 
     BRAKER3_SR ( ch_sr,
                  params.prot_seq,
-                 params.busco_lineage
+                 params.busco_lineage,
+                 params.species
     )
     ch_versions = ch_versions.mix(BRAKER3_SR.out.versions.first())
 
-    ALIGN_ISOSEQ ( ch_lr )
-    ch_versions = ch_versions.mix(ALIGN_ISOSEQ.out.versions.first())
+    // ALIGN_ISOSEQ ( ch_lr )
+    // ch_versions = ch_versions.mix(ALIGN_ISOSEQ.out.versions.first())
 
-    BRAKER3_LR ( ch_genome,
-                 ALIGN_ISOSEQ.out.bam,
-                 params.prot_seq,
-                 params.busco_lineage
-    )
+    // BRAKER3_LR ( ch_genome,
+    //              ALIGN_ISOSEQ.out.bam,
+    //              params.prot_seq,
+    //              params.busco_lineage
+    // )
 
-    COMBINE_LRSR ( BRAKER3_SR.out.gtf,
-                   BRAKER3_LR.out.gtf,
-                   BRAKER3_SR.out.hintsfile,
-                   BRAKER3_LR.out.hintsfile
-    )
+    // COMBINE_LRSR ( BRAKER3_SR.out.gtf,
+    //                BRAKER3_LR.out.gtf,
+    //                BRAKER3_SR.out.hintsfile,
+    //                BRAKER3_LR.out.hintsfile
+    // )
 
-    emit:
-    sr_bam      = BRAKER3_SR.out.bam              // channel: [ val(meta), [bam] ]
-    gtf         = COMBINE_LRSR.out.gtf            // channel: [ val(meta), [ gtf ] ]
-    cds         = COMBINE_LRSR.out.codingseq      // channel: [ val(meta), [ fasta ] ]
-    amino_acids = COMBINE_LRSR.out.aa             // channel: [ val(meta), [ fasta ] ]
-    versions    = ch_versions                     // channel: [ versions.yml ]
+    // emit:
+    // sr_bam      = BRAKER3_SR.out.bam              // channel: [ val(meta), [bam] ]
+    // gtf         = COMBINE_LRSR.out.gtf            // channel: [ val(meta), [ gtf ] ]
+    // cds         = COMBINE_LRSR.out.codingseq      // channel: [ val(meta), [ fasta ] ]
+    // amino_acids = COMBINE_LRSR.out.aa             // channel: [ val(meta), [ fasta ] ]
+    // versions    = ch_versions                     // channel: [ versions.yml ]
 }
 

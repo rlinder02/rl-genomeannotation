@@ -60,6 +60,11 @@
                     "type": "string",
                     "default": "[]",
                     "description": "The BUSCO lineage to use"
+                },
+                "species": {
+                    "type": "string",
+                    "default": "[]",
+                    "description": "Name of the species being interrogated"
                 }
             }
         },

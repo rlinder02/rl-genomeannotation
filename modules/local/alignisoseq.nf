@@ -8,7 +8,7 @@ process ALIGN_ISOSEQ {
         'community.wave.seqera.io/library/minimap2_samtools:7e38c0cfb1291cfb' }"
 
     input:
-    tuple val(meta), path(bam)
+    tuple val(meta), path(assembly), path(isoseq)
 
     output:
     tuple val(meta), path("*.bam"), emit: bam
@@ -27,8 +27,8 @@ process ALIGN_ISOSEQ {
         -x splice:hq \\
         -uf \\
         -t $task.cpus \\
-        $ref \\
-        $scaffold \\
+        $assembly \\
+        $isoseq \\
     | \\
     samtools \\
         view \\

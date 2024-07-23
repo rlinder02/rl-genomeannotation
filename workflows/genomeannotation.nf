@@ -4,7 +4,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-// include { ANNOTATE               } from '../subworkflows/local/annotate'
+include { ANNOTATE               } from '../subworkflows/local/annotate'
 // include { ANNOTATION_QC          } from '../subworkflows/local/annotation_qc'
 
 include { MULTIQC                } from '../modules/nf-core/multiqc/main'

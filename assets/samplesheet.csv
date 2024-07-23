@@ -1,2 +1,2 @@
-sample,fasta,RNAseq,Isoseq
-J_hap1,data/J.scaffolded.masked.fasta,data/,data/Jcell_isoSeqccs_demux2_flnc.fastq.gz
+sample,haplotype,fasta,RNAseq,Isoseq
+J,hap1,data/J.scaffolded.masked.fasta,data/,data/Jcell_isoSeqccs_demux2_flnc.fastq.gz

@@ -13,6 +13,12 @@
                 "errorMessage": "Sample name must be provided and cannot contain spaces",
                 "meta": ["id"]
             },
+            "haplotype": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Parental haplotype of the assembly (optional)",
+                "meta": ["haplotype"]
+            },
             "fasta": {
                 "type": "string",
                 "format": "file-path",

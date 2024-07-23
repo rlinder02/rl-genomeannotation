@@ -13,6 +13,7 @@ workflow ANNOTATE {
     ch_sr = ch_samplesheet.map { meta, fasta, folder, file -> [meta, fasta, folder] }
     ch_lr = ch_samplesheet.map { meta, fasta, folder, file -> [meta, fasta, file] }
     ch_genome = ch_samplesheet.map { meta, fasta, folder, file -> [meta, fasta] }
+    ch_genome.view()
     ch_versions = Channel.empty()
 
     BRAKER3_SR ( ch_sr,

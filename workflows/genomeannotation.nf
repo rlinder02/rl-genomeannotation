@@ -33,9 +33,9 @@ workflow GENOMEANNOTATION {
     //
     // SUBWORKFLOW: Annotate a genome assembly with short-read only or short- and long-read (PacBio) RNAseq data
     //
-    // ANNOTATE (
-    //     ch_samplesheet  
-    // )
+    ANNOTATE (
+        ch_samplesheet  
+    )
 
     // ch_multiqc_files = ch_multiqc_files.mix(HIFI_QC.out.n50.map {it[1]})
     // ch_multiqc_files = ch_multiqc_files.mix(HIFI_QC.out.read_len_plot.map {it[1]})

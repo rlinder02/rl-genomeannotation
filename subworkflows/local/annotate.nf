@@ -40,11 +40,11 @@ workflow ANNOTATE {
                    ch_genome
     )
 
-    // emit:
-    // sr_bam      = BRAKER3_SR.out.bam              // channel: [ val(meta), [bam] ]
-    // gtf         = COMBINE_LRSR.out.gtf            // channel: [ val(meta), [ gtf ] ]
-    // cds         = COMBINE_LRSR.out.codingseq      // channel: [ val(meta), [ fasta ] ]
-    // amino_acids = COMBINE_LRSR.out.aa             // channel: [ val(meta), [ fasta ] ]
-    // versions    = ch_versions                     // channel: [ versions.yml ]
+    emit:
+    sr_bam      = BRAKER3_SR.out.bam              // channel: [ val(meta), [bam] ]
+    gtf         = COMBINE_LRSR.out.gtf            // channel: [ val(meta), [ gtf ] ]
+    cds         = COMBINE_LRSR.out.codingseq      // channel: [ val(meta), [ fasta ] ]
+    amino_acids = COMBINE_LRSR.out.aa             // channel: [ val(meta), [ fasta ] ]
+    versions    = ch_versions                     // channel: [ versions.yml ]
 }
 

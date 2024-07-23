@@ -68,6 +68,22 @@
                 }
             }
         },
+        "makeucschub_options": {
+            "title": "Make UCSC hub options",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "A descriptive label to use for the hub"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email address to send automated notifications to"
+                }
+            }
+        },
         "omark_options": {
             "title": "Omark options",
             "type": "object",

@@ -36,19 +36,17 @@ workflow GENOMEANNOTATION {
         ch_samplesheet  
     )
 
-    // ch_multiqc_files = ch_multiqc_files.mix(HIFI_QC.out.n50.map {it[1]})
-    // ch_multiqc_files = ch_multiqc_files.mix(HIFI_QC.out.read_len_plot.map {it[1]})
-    // ch_versions = ch_versions.mix(HIFI_QC.out.versions)
+    ch_versions = ch_versions.mix(ANNOTATE.out.versions)
 
     //
     //SUBWORKFLOW: Assemble PacBio HiFi reads and scaffold using a reference genome
     //
-    // ANNOTATION_QC (
-    //     ch_samplesheet,
-    //     ANNOTATE.out.gtf,
-    //     ANNOTATE.out.aa,
-    //     ANNOTATE.out.sr_bam
-    // )
+    ANNOTATION_QC (
+        ch_samplesheet,
+        ANNOTATE.out.gtf,
+        ANNOTATE.out.amino_acids,
+        ANNOTATE.out.sr_bam
+    )
 
     // ch_assembly_fasta = GENOME_ASSEMBLY.out.assembly
     // ch_assembly_scaffold = GENOME_ASSEMBLY.out.corrected_scaffold

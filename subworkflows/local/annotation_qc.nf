@@ -6,7 +6,7 @@ workflow ANNOTATION_QC {
     take:
     ch_samplesheet
     ch_gtf                           // channel: [ val(meta), [ gtf ] ]
-    ch_aa                            // channel: [ val(meta), [ fasta ] ]
+    ch_amino_acids                   // channel: [ val(meta), [ fasta ] ]
     ch_sr_bam                        // channel: [ val(meta), [ bam ] ]
 
     main:
@@ -15,22 +15,23 @@ workflow ANNOTATION_QC {
     ch_versions = Channel.empty()
 
 
-    MAKE_UCSC_HUB ( ch_gtf,
+    MAKE_UCSC_HUB ( ch_gff,
                     ch_genome,
-                    ch_sr_bam
+                    ch_sr_bam,
+                    params.label,
+                    params.email
     )
     ch_versions = ch_versions.mix(MAKE_UCSC_HUB.out.versions.first())
 
     OMARK ( params.omamer_db,
-            ch_aa,
+            ch_amino_acids,
             ch_splice
     )
     ch_versions = ch_versions.mix(OMARK.out.versions.first())
 
     emit:
-    bai      = SAMTOOLS_INDEX.out.bai          // channel: [ val(meta), [ bai ] ]
-    csi      = SAMTOOLS_INDEX.out.csi          // channel: [ val(meta), [ csi ] ]
-
-    versions = ch_versions                     // channel: [ versions.yml ]
+    ucsc_hub      = MAKE_UCSC_HUB.out.ucsc_hub          // channel: [ val(meta), [ bai ] ]
+    csi           = SAMTOOLS_INDEX.out.csi              // channel: [ val(meta), [ csi ] ]
+    versions = ch_versions                              // channel: [ versions.yml ]
 }
 

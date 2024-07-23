@@ -21,6 +21,7 @@ process BRAKER3_SR {
     tuple val(meta), path("*.aa")               , emit: aa
     tuple val(meta), path("*.hinstfile.gff")    , emit: hintsfile
     tuple val(meta), path("*.gff3")             , emit: gff3
+    tuple val(meta), path("*.bam")              , emit: bam
     path "versions.yml"                         , emit: versions
 
     when:

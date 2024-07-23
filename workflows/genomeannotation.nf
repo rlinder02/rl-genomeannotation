@@ -28,7 +28,6 @@ workflow GENOMEANNOTATION {
 
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
-    ch_samplesheet.view()
 
     //
     // SUBWORKFLOW: Annotate a genome assembly with short-read only or short- and long-read (PacBio) RNAseq data

@@ -16,12 +16,12 @@ workflow ANNOTATE {
     ch_genome.view()
     ch_versions = Channel.empty()
 
-    // BRAKER3_SR ( ch_sr,
-    //              params.prot_seq,
-    //              params.busco_lineage,
-    //              params.species
-    // )
-    // ch_versions = ch_versions.mix(BRAKER3_SR.out.versions.first())
+    BRAKER3_SR ( ch_sr,
+                 params.prot_seq,
+                 params.busco_lineage,
+                 params.species
+    )
+    ch_versions = ch_versions.mix(BRAKER3_SR.out.versions.first())
 
     // ALIGN_ISOSEQ ( ch_lr )
     // ch_versions = ch_versions.mix(ALIGN_ISOSEQ.out.versions.first())

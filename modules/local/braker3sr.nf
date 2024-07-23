@@ -30,9 +30,11 @@ process BRAKER3_SR {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    name=\$(basename $prot_db .gz)
+    zcat $prot_db > \$name
     braker.pl \\
         --genome=$assembly \\
-        --prot_seq=$prot_db \\
+        --prot_seq=\$name \\
         --species=$species \\
         --gff3 \\
         --rnaseq_sets_ids=${meta.id} \\

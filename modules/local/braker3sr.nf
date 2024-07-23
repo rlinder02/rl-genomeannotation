@@ -6,6 +6,7 @@ process BRAKER3_SR {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://docker.io/teambraker/braker3:v3.0.7.5' :
         'docker.io/teambraker/braker3:v3.0.7.5' }"
+    containerOptions = "--user root"
 
     input:
     tuple val(meta), path(assembly), path(sr_rna)  

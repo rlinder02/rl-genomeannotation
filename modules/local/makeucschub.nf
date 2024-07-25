@@ -11,7 +11,6 @@ process MAKE_UCSC_HUB {
     input:
     tuple val(meta), path(gtf)
     tuple val(meta), path(assembly)
-    tuple val(meta), path(sr_bam)
     val(label)
     val(email)
     
@@ -32,8 +31,6 @@ process MAKE_UCSC_HUB {
         -g $assembly \\
         -e $email \\
         -a $gtf \\
-        -b $sr_bam \\
-        -d \\
         $args 
 
     cat <<-END_VERSIONS > versions.yml

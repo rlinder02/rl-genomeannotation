@@ -12,7 +12,7 @@ process MAKE_UCSC_HUB {
     tuple val(meta), path(gtf)
     tuple val(meta), path(assembly)
     val(label)
-    val(email)
+    val(contact)
     
     output:
     tuple val(meta), path("${prefix}"), emit: ucsc_hub
@@ -29,7 +29,7 @@ process MAKE_UCSC_HUB {
         -l ${prefix} \\
         -L $label \\
         -g $assembly \\
-        -e $email \\
+        -e $contact \\
         -a $gtf \\
         $args 
 

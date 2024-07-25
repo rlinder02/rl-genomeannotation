@@ -76,10 +76,12 @@
             "properties": {
                 "label": {
                     "type": "string",
+                    "default": "[]",
                     "description": "A descriptive label to use for the hub"
                 },
                 "email": {
                     "type": "string",
+                    "default": "[]",
                     "description": "The email address to send automated notifications to"
                 }
             }

@@ -14,7 +14,7 @@ workflow ANNOTATION_QC {
     ch_versions = Channel.empty()
 
 
-    MAKE_UCSC_HUB ( ch_gff,
+    MAKE_UCSC_HUB ( ch_gtf,
                     ch_genome,
                     params.label,
                     params.email

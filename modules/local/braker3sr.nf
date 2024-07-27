@@ -30,8 +30,8 @@ process BRAKER3_SR {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    cp -r /opt/Augustus/config/ /home/jovyan/work
-    export AUGUSTUS_CONFIG_PATH=/home/jovyan/work/
+    cp -r /opt/Augustus/config/ /home/jovyan
+    export AUGUSTUS_CONFIG_PATH=/home/jovyan/
     name=\$(basename $prot_db .gz)
     zcat $prot_db > \$name
     braker.pl \\
@@ -45,7 +45,7 @@ process BRAKER3_SR {
         --busco_lineage=$busco \\
         --makehub \\
         --email rlinder@sbpdiscovery.org \\
-        --AUGUSTUS_CONFIG_PATH=/home/jovyan/work/ \\
+        --AUGUSTUS_CONFIG_PATH=/home/jovyan/ \\
         $args
 
     cat <<-END_VERSIONS > versions.yml

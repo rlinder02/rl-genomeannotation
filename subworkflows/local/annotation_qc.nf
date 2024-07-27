@@ -28,7 +28,7 @@ workflow ANNOTATION_QC {
     // ch_versions = ch_versions.mix(OMARK.out.versions.first())
 
     emit:
-    ucsc_hub      = MAKE_UCSC_HUB.out.ucsc_hub          // channel: [ val(meta), [ bai ] ]
+    ucsc_hub = MAKE_UCSC_HUB.out.ucsc_hub               // channel: [ val(meta), [ bai ] ]
     versions = ch_versions                              // channel: [ versions.yml ]
 }
 

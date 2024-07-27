@@ -36,7 +36,7 @@ workflow GENOMEANNOTATION {
         ch_samplesheet  
     )
 
-    ch_versions = ch_versions.mix(ANNOTATE.out.versions)
+    // ch_versions = ch_versions.mix(ANNOTATE.out.versions)
 
     //
     //SUBWORKFLOW: Assemble PacBio HiFi reads and scaffold using a reference genome

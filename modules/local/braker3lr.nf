@@ -6,7 +6,7 @@ process BRAKER3_LR {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://docker.io/teambraker/braker3:isoseq' :
         'docker.io/teambraker/braker3:isoseq' }"
-    containerOptions = "--user root"
+    //containerOptions = "--user root"
 
     input:
     tuple val(meta), path(assembly)

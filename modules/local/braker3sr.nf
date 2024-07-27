@@ -30,6 +30,7 @@ process BRAKER3_SR {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    chmod 775 /home
     cp -r /opt/Augustus/config/ /home
     export AUGUSTUS_CONFIG_PATH=/home/
     name=\$(basename $prot_db .gz)

@@ -10,7 +10,7 @@ process BRAKER3_SR {
 
     input:
     //tuple val(meta), path(assembly), path(sr_rna) 
-    path(bam) // delete once troubleshoot
+    tuple val(meta), path(bam) // delete once troubleshoot
     path(prot_db)
     val(busco)
     val(species)

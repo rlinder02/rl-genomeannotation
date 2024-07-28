@@ -6,13 +6,15 @@ process BRAKER3_SR {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://docker.io/teambraker/braker3:v3.0.7.5' :
         'docker.io/teambraker/braker3:v3.0.7.5' }"
-    //containerOptions = "--user root"
+    containerOptions = "--user root"
 
     input:
-    tuple val(meta), path(assembly), path(sr_rna)  
+    //tuple val(meta), path(assembly), path(sr_rna) 
+    path(bam) // delete once troubleshoot
     path(prot_db)
     val(busco)
     val(species)
+    path(fasta) // delete once troubleshoot
 
     output:
     tuple val(meta), path("braker/*.log")              , emit: logs
@@ -30,25 +32,16 @@ process BRAKER3_SR {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    apt install sudo
-    sudo bash
-    chmod 775 /home
-    cp -r /opt/Augustus/config/ /home
-    export AUGUSTUS_CONFIG_PATH=/home/
-    name=\$(basename $prot_db .gz)
-    zcat $prot_db > \$name
     braker.pl \\
-        --genome=$assembly \\
-        --prot_seq=\$name \\
+        --genome=$fasta \\
+        --prot_seq=$prot_db \\
         --species=$species \\
         --gff3 \\
-        --rnaseq_sets_ids=${meta.id} \\
-        --rnaseq_sets_dirs=$sr_rna \\
+        --bam $bam \\
         --threads $task.cpus \\
         --busco_lineage=$busco \\
         --makehub \\
         --email rlinder@sbpdiscovery.org \\
-        --AUGUSTUS_CONFIG_PATH=/home/ \\
         $args
 
     cat <<-END_VERSIONS > versions.yml

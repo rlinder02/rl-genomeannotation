@@ -1,5 +1,5 @@
 process BRAKER3_SR {
-    tag "Test"
+    tag "$meta.id"
     label 'process_high'
 
     conda "${moduleDir}/environment.yml"
@@ -9,12 +9,10 @@ process BRAKER3_SR {
     containerOptions = "--user root"
 
     input:
-    //tuple val(meta), path(assembly), path(sr_rna) 
-    path(bam) // delete once troubleshoot
+    tuple val(meta), path(assembly), path(sr_rna)  
     path(prot_db)
     val(busco)
     val(species)
-    path(fasta) // delete once troubleshoot
 
     output:
     tuple val(meta), path("braker/*.log")              , emit: logs
@@ -30,14 +28,17 @@ process BRAKER3_SR {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "test"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    name=\$(basename $prot_db .gz)
+    zcat $prot_db > \$name
     braker.pl \\
-        --genome=$fasta \\
-        --prot_seq=$prot_db \\
+        --genome=$assembly \\
+        --prot_seq=\$name \\
         --species=$species \\
         --gff3 \\
-        --bam $bam \\
+        --rnaseq_sets_ids=${meta.id} \\
+        --rnaseq_sets_dirs=$sr_rna \\
         --threads $task.cpus \\
         --busco_lineage=$busco \\
         --makehub \\
@@ -52,7 +53,7 @@ process BRAKER3_SR {
 
     stub:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "test"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.bam
 

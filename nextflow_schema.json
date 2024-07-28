@@ -65,14 +65,6 @@
                     "type": "string",
                     "default": "[]",
                     "description": "Name of the species being interrogated"
-                },
-                "bam": {
-                    "type": "string",
-                    "description": "Test bam for running braker"
-                },
-                "fasta": {
-                    "type": "string",
-                    "description": "Test fasta for running braker"
                 }
             }
         },

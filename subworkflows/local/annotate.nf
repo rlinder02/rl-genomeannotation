@@ -23,8 +23,8 @@ workflow ANNOTATE {
     )
     ch_versions = ch_versions.mix(BRAKER3_SR.out.versions.first())
 
-    ALIGN_ISOSEQ ( ch_lr )
-    ch_versions = ch_versions.mix(ALIGN_ISOSEQ.out.versions.first())
+    // ALIGN_ISOSEQ ( ch_lr )
+    // ch_versions = ch_versions.mix(ALIGN_ISOSEQ.out.versions.first())
 
     // BRAKER3_LR ( ch_genome,
     //              ALIGN_ISOSEQ.out.bam,

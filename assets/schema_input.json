@@ -37,7 +37,7 @@
                 "type": "string",
                 "format": "file-path",
                 "exists": true,
-                "pattern": "^\\S+\\.bam$", // .f(ast)?q\\.gz replaces .bam once troubleshoot
+                "pattern": "^\\S+\\.bam$", 
                 "errorMessage": "FastQ file for Isoseq reads cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
             }
         },

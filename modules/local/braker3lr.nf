@@ -6,7 +6,7 @@ process BRAKER3_LR {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://docker.io/teambraker/braker3:isoseq' :
         'docker.io/teambraker/braker3:isoseq' }"
-    //containerOptions = "--user root"
+    containerOptions = "--user root"
 
     input:
     tuple val(meta), path(assembly)
@@ -31,8 +31,6 @@ process BRAKER3_LR {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    cp -r /opt/Augustus/config/ /home
-    export AUGUSTUS_CONFIG_PATH=/home/
     name=\$(basename $prot_db .gz)
     zcat $prot_db > \$name
     braker.pl \\
@@ -45,7 +43,6 @@ process BRAKER3_LR {
         --busco_lineage=$busco \\
         --makehub \\
         --email rlinder@sbpdiscovery.org \\
-        --AUGUSTUS_CONFIG_PATH=/home/ \\
         $args
        
     cat <<-END_VERSIONS > versions.yml

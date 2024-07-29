@@ -31,6 +31,7 @@ process BRAKER3_LR {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    cat /opt/BRAKER/scripts/braker_cleanup.pl | sed 's/0700/0777/g' > /opt/BRAKER/scripts/braker_cleanup.pl
     name=\$(basename $prot_db .gz)
     zcat $prot_db > \$name
     braker.pl \\

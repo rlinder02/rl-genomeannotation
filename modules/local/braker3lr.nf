@@ -20,7 +20,7 @@ process BRAKER3_LR {
     tuple val(meta), path("braker/braker.gtf")              , emit: gtf
     tuple val(meta), path("braker/braker.codingseq")        , emit: codingseq
     tuple val(meta), path("braker/braker.aa")               , emit: aa
-    tuple val(meta), path("braker/hinstfile.gff")           , emit: hintsfile
+    tuple val(meta), path("braker/hintsfile.gff")           , emit: hintsfile
     tuple val(meta), path("braker/braker.gff3")             , emit: gff3
     path "versions.yml"                                     , emit: versions
 

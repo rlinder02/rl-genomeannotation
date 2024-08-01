@@ -23,7 +23,7 @@ process MAKE_UCSC_HUB {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}_${meta.haplotype}"
+    def prefix = task.ext.prefix ?: "${meta.id}.${meta.haplotype}"
     """
     make_hub.py \\
         -l ${prefix} \\

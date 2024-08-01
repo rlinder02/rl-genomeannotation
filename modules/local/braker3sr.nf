@@ -15,13 +15,13 @@ process BRAKER3_SR {
     val(species)
 
     output:
-    tuple val(meta), path("braker/*.log")              , emit: logs
-    tuple val(meta), path("braker/*.gtf")              , emit: gtf
-    tuple val(meta), path("braker/*.codingseq")        , emit: codingseq
-    tuple val(meta), path("braker/*.aa")               , emit: aa
-    tuple val(meta), path("braker/*.hinstfile.gff")    , emit: hintsfile
-    tuple val(meta), path("braker/*.gff3")             , emit: gff3
-    path "versions.yml"                                , emit: versions
+    tuple val(meta), path("braker/braker.log")              , emit: log
+    tuple val(meta), path("braker/braker.gtf")              , emit: gtf
+    tuple val(meta), path("braker/braker.codingseq")        , emit: codingseq
+    tuple val(meta), path("braker/braker.aa")               , emit: aa
+    tuple val(meta), path("braker/hintsfile.gff")           , emit: hintsfile
+    tuple val(meta), path("braker/braker.gff3")             , emit: gff3
+    path "versions.yml"                                     , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

@@ -36,16 +36,16 @@ workflow GENOMEANNOTATION {
         ch_samplesheet  
     )
 
-    // ch_versions = ch_versions.mix(ANNOTATE.out.versions)
+    ch_versions = ch_versions.mix(ANNOTATE.out.versions)
 
     //
     //SUBWORKFLOW: Assemble PacBio HiFi reads and scaffold using a reference genome
     //
-    // ANNOTATION_QC (
-    //     ch_samplesheet,
-    //     ANNOTATE.out.gtf,
-    //     ANNOTATE.out.amino_acids,
-    // )
+    ANNOTATION_QC (
+        ch_samplesheet,
+        ANNOTATE.out.gtf,
+        ANNOTATE.out.amino_acids,
+    )
 
     // ch_assembly_fasta = GENOME_ASSEMBLY.out.assembly
     // ch_assembly_scaffold = GENOME_ASSEMBLY.out.corrected_scaffold

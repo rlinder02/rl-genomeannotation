@@ -27,7 +27,7 @@ process COMBINE_LRSR {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}_${meta.haplotype}"
+    def prefix = task.ext.prefix ?: "${meta.id}.${meta.haplotype}"
     """
     tsebra.py \\
         -g $sr_gtf,$lr_gtf \\

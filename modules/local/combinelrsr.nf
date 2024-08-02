@@ -38,7 +38,9 @@ process COMBINE_LRSR {
         -g $assembly \\
         -o ${prefix} \\
         -f tsebra.gtf
-    cat tsebra.gtf | gtf2gff.pl -gff3 --out=${prefix}.tsebra.gff3
+    
+    fix_joingenes_gtf.pl < tsebra.gtf > tsebra.fixed.gtf
+    cat tsebra.fixed.gtf | gtf2gff.pl -gff3 --out=${prefix}.tsebra.gff3
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

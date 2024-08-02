@@ -9,10 +9,10 @@ process COMBINE_LRSR {
     containerOptions = "--user root"
 
     input:
-    tuple val(meta), path(sr_gtf), stageAs: 'sr_braker.gtf'
-    tuple val(meta), path(lr_gtf), stageAs: 'lr_braker.gtf'
-    tuple val(meta), path(sr_hint), stageAs: 'sr_hintsfile.gff'
-    tuple val(meta), path(lr_hint), stageAs: 'lr_hintsfile.gff'
+    tuple val(meta), path(sr_gtf, stageAs: 'sr_braker.gtf')
+    tuple val(meta), path(lr_gtf, stageAs: 'lr_braker.gtf')
+    tuple val(meta), path(sr_hint, stageAs: 'sr_hintsfile.gff')
+    tuple val(meta), path(lr_hint, stageAs: 'lr_hintsfile.gff')
     tuple val(meta), path(assembly)
 
     output:

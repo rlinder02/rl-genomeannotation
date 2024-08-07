@@ -82,7 +82,6 @@ while(<STDIN>){
 			}
 			push(@{$genes{$tx_id}{'lines'}}, $t[0]."\t".$t[1]."\t".$t[2]."\t".$t[3]."\t".$t[4]."\t".$t[5]."\t".$t[6]."\t".$t[7]."\ttranscript_id \"".$t[8]."\"; gene_id \"".$tx_id."\"");
 		}elsif(m/\tCDS\t/){
-			$tx_id = $t2[0];
 			if ($previous[2] eq "CDS"){
 				my $start = $previous[4] + 1;
 				my $end = $t[3] - 1;
@@ -91,7 +90,6 @@ while(<STDIN>){
 			push(@{$genes{$tx_id}{'lines'}}, $_);
 			push(@{$genes{$tx_id}{'lines'}}, $t[0]."\t".$t[1]."\texon\t".$t[3]."\t".$t[4]."\t.\t".$t[6]."\t.\t".$t[8]);
 		}else{
-			$tx_id = $t2[0];
 			push(@{$genes{$tx_id}{'lines'}}, $_);
 		}
 		@previous = @t;

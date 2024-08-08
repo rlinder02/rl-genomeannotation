@@ -39,8 +39,11 @@ process COMBINE_LRSR {
         -o ${prefix} \\
         -f tsebra.gtf
     
-    fix_joingenes_gtf.pl < tsebra.gtf > tsebra.fixed.gtf
-    cat tsebra.fixed.gtf | gtf2gff.pl -gff3 --out=${prefix}.tsebra.gff3
+    rename_gtf.py \\
+        --gtf tsebra.gtf \\
+        --out tsebra_renamed.gtf
+    
+    gtf2gff.pl < tsebra_renamed.gtf --out ${prefix}.gff3
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

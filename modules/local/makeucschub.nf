@@ -27,7 +27,7 @@ process MAKE_UCSC_HUB {
     """
     make_hub.py \\
         -l ${prefix} \\
-        -L $label \\
+        -L "${label}" \\
         -g $assembly \\
         -e $contact \\
         -a $gtf \\

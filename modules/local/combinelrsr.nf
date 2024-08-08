@@ -17,7 +17,7 @@ process COMBINE_LRSR {
 
     output:
     tuple val(meta), path("*.gff3")             , emit: gff3
-    tuple val(meta), path("*.gtf")              , emit: gtf
+    tuple val(meta), path("*renamed.gtf")       , emit: gtf
     tuple val(meta), path("*.codingseq")        , emit: codingseq
     tuple val(meta), path("*.aa")               , emit: aa
     path "versions.yml"                         , emit: versions

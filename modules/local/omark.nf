@@ -6,7 +6,8 @@ process OMARK {
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/omark:0.3.0--pyh7cba7a3_0':
         'biocontainers/omark:0.3.0--pyh7cba7a3_0' }"
-
+    containerOptions = "--user root"
+    
     input:
     path(omamer_db)
     tuple val(meta), path(fasta)

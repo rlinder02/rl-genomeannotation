@@ -95,10 +95,6 @@
                 "omamer_db": {
                     "type": "string",
                     "description": "The Omamer proteame database"
-                },
-                "splice_txt": {
-                    "type": "string",
-                    "description": "Txt file of protein isoforms"
                 }
             }
         },

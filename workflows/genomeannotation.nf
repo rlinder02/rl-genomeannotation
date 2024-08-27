@@ -44,7 +44,7 @@ workflow GENOMEANNOTATION {
     ANNOTATION_QC (
         ch_samplesheet,
         ANNOTATE.out.gtf,
-        ANNOTATE.out.amino_acids,
+        ANNOTATE.out.amino_acids
     )
 
     // ch_assembly_fasta = GENOME_ASSEMBLY.out.assembly

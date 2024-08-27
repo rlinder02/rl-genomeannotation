@@ -15,8 +15,8 @@ process MAKE_UCSC_HUB {
     val(contact)
     
     output:
-    tuple val(meta), path("${prefix}"), emit: ucsc_hub
-    path "versions.yml"               , emit: versions
+    tuple val(meta), path("${meta.id}.${meta.haplotype}"), emit: ucsc_hub
+    path "versions.yml"                                  , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

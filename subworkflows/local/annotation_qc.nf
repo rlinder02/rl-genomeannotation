@@ -21,14 +21,14 @@ workflow ANNOTATION_QC {
     )
     ch_versions = ch_versions.mix(MAKE_UCSC_HUB.out.versions.first())
 
-    // OMARK ( params.omamer_db,
-    //         ch_amino_acids,
-    //         ch_splice
-    // )
-    // ch_versions = ch_versions.mix(OMARK.out.versions.first())
+    OMARK ( params.omamer_db,
+            ch_amino_acids
+    )
+    ch_versions = ch_versions.mix(OMARK.out.versions.first())
 
     emit:
     ucsc_hub = MAKE_UCSC_HUB.out.ucsc_hub               // channel: [ val(meta), [ bai ] ]
+    omark_qc = OMARK.out.omark_dir                      // channel: [ val(meta), path(dir)]
     versions = ch_versions                              // channel: [ versions.yml ]
 }
 

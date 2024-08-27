@@ -25,7 +25,7 @@ process OMARK {
     omark_splice_file.py "${fasta}"
     omamer search \\
         $args \\
-        -db $omamer_db \\
+        --db $omamer_db \\
         --query $fasta \\
         --out ${prefix}.omamer
     

@@ -42,8 +42,8 @@ workflow RL_GENOMEANNOTATION {
         samplesheet
     )
 
-    // emit:
-    // multiqc_report = GENOMEANNOTATION.out.multiqc_report // channel: /path/to/multiqc_report.html
+    emit:
+    multiqc_report = GENOMEANNOTATION.out.multiqc_report // channel: /path/to/multiqc_report.html
 
 }
 /*

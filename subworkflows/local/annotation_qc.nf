@@ -29,6 +29,8 @@ workflow ANNOTATION_QC {
     emit:
     ucsc_hub = MAKE_UCSC_HUB.out.ucsc_hub               // channel: [ val(meta), [ bai ] ]
     omark_qc = OMARK.out.omark_dir                      // channel: [ val(meta), path(dir)]
+    omark_png = OMARK.out.png                   
+    omark_summary = OMARK.out.summary
     versions = ch_versions                              // channel: [ versions.yml ]
 }
 

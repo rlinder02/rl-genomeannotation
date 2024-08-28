@@ -13,8 +13,11 @@ process OMARK {
     tuple val(meta), path(fasta)
 
     output:
-    tuple val(meta), path("*_omark_output"), emit: omark_dir
-    path "versions.yml"                    , emit: versions
+    tuple val(meta), path("*_omark_output")               , emit: omark_dir // need to emit each output separately to put into multiqc report
+    tuple val(meta), path("*_omark_output/*.png")         , emit: png
+    tuple val(meta), path("*_omark_output/*_summary.txt") , emit: summary
+    path "versions.yml"                                   , emit: versions
+
 
     when:
     task.ext.when == null || task.ext.when

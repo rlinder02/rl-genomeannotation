@@ -47,14 +47,6 @@ workflow GENOMEANNOTATION {
         ANNOTATE.out.amino_acids
     )
 
-    ch_omark = ANNOTATION_QC.out.omark_qc
-    ch_omark_png = ANNOTATION_QC.out.omark_png
-    ch_omark_summary = ANNOTATION_QC.out.omark_summary
-
-    ch_multiqc_files = ch_multiqc_files.mix(ch_omark_png.map {it[1]})
-    ch_multiqc_files = ch_multiqc_files.mix(ch_omark_summary.map {it[1]})
-
-    ch_versions = ch_versions.mix(ANNOTATE.out.versions)
     ch_versions = ch_versions.mix(ANNOTATION_QC.out.versions)
 
     //
